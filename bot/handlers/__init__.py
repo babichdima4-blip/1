@@ -1,7 +1,7 @@
 """Handlers package."""
 from aiogram import Dispatcher
 
-from . import start, profile, rating, schedule
+from . import start, profile, rating, schedule, achievements
 
 
 def register_all_handlers(dp: Dispatcher):
@@ -11,3 +11,4 @@ def register_all_handlers(dp: Dispatcher):
     dp.include_router(profile.router)
     dp.include_router(rating.router)
     dp.include_router(schedule.router)
+    dp.include_router(achievements.router)

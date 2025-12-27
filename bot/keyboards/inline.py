@@ -59,3 +59,34 @@ def get_schedule_keyboard() -> InlineKeyboardMarkup:
     ]
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
+
+
+def get_achievements_keyboard() -> InlineKeyboardMarkup:
+    """Get keyboard for achievements views."""
+    keyboard = [
+        [
+            InlineKeyboardButton(text="📋 Всі", callback_data="achievements_all"),
+            InlineKeyboardButton(text="✅ Завершені", callback_data="achievements_completed")
+        ]
+    ]
+
+    return InlineKeyboardMarkup(inline_keyboard=keyboard)
+
+
+def get_achievement_detail_keyboard(achievement_id: int, is_claimed: bool = False) -> InlineKeyboardMarkup:
+    """Get keyboard for achievement details."""
+    keyboard = []
+
+    if not is_claimed:
+        keyboard.append([
+            InlineKeyboardButton(
+                text="🎁 Забрати нагороду",
+                callback_data=f"claim_ach_{achievement_id}"
+            )
+        ])
+
+    keyboard.append([
+        InlineKeyboardButton(text="« Назад", callback_data="achievements_all")
+    ])
+
+    return InlineKeyboardMarkup(inline_keyboard=keyboard)
